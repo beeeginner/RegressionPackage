@@ -75,10 +75,11 @@ class Regression:
         assert self.mode in ('auto','Ridge','Lasso'),r'模式必须是auto,Ridge,lasso之一'
         if self.mode == 'auto':
             #自动推断模式
-            print("存在多重共线性，使用岭回归")
+           
             a = np.linalg.matrix_rank(self.X)
             if np.linalg.matrix_rank(self.X)<self.X.shape[1]:
                 #存在多重共线性
+                 print("存在多重共线性，使用岭回归")
                 res = self._Ridge()
                 return res
             else:
